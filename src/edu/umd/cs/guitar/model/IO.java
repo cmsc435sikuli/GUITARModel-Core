@@ -82,7 +82,8 @@ public class IO {
         try {
             retObj = readObjFromFile(new FileInputStream(sFileName), cls);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        	GUITARLog.log.error(sFileName + " not found!!!");
+//            e.printStackTrace();
         }
         return retObj;
     }
