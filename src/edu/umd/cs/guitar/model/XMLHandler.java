@@ -65,7 +65,7 @@ public class XMLHandler {
             retObj = u.unmarshal(is);
 
         } catch (JAXBException e) {
-            e.printStackTrace();
+			GUITARLog.log.error(e);
         }
         return retObj;
     }
@@ -110,10 +110,9 @@ public class XMLHandler {
             marshaller.marshal(object, os);
             os.close();
         } catch (JAXBException e) {
-            e.printStackTrace();
+			GUITARLog.log.error(e);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+			GUITARLog.log.error(e);
         }
     }
 
@@ -131,7 +130,7 @@ public class XMLHandler {
         try {
             writeObjToFile(object, new FileOutputStream(sFileName));
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+			GUITARLog.log.error(e);
         }
     }
 }

@@ -63,7 +63,7 @@ public class IO {
             retObj = u.unmarshal(is);
 
         } catch (JAXBException e) {
-            e.printStackTrace();
+			GUITARLog.log.error(e);
         }
         return retObj;
     }
@@ -83,7 +83,6 @@ public class IO {
             retObj = readObjFromFile(new FileInputStream(sFileName), cls);
         } catch (FileNotFoundException e) {
         	GUITARLog.log.error(sFileName + " not found!!!");
-//            e.printStackTrace();
         }
         return retObj;
     }
@@ -107,10 +106,10 @@ public class IO {
             marshaller.marshal(object, os);
             os.close();
         } catch (JAXBException e) {
-            e.printStackTrace();
+			GUITARLog.log.error(e);
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+			GUITARLog.log.error(e);
         }
     }
 
@@ -129,7 +128,6 @@ public class IO {
             writeObjToFile(object, new FileOutputStream(sFileName));
         } catch (FileNotFoundException e) {
             GUITARLog.log.error(sFileName + " NOT FOUND!!!");
-            // e.printStackTrace();
         }
     }
 }

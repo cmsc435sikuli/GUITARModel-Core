@@ -21,10 +21,10 @@ package edu.umd.cs.guitar.exception;
 
 /**
  * 
- * Exception related to application connection  
+ * Exception related to application connection
  * 
  * @author <a href="mailto:baonn@cs.umd.edu"> Bao Nguyen </a>
- *
+ * 
  */
 public class ApplicationConnectException extends GException {
 
@@ -37,6 +37,6 @@ public class ApplicationConnectException extends GException {
 	 * 
 	 */
 	public ApplicationConnectException() {
-	}
 
+	}
 }

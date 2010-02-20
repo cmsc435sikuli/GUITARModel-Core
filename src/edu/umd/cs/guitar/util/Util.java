@@ -87,7 +87,7 @@ public class Util {
                     retList.add(line);
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+			GUITARLog.log.error(e);
         } catch (Exception e) {
             GUITARLog.log.error( sFileName + " not found",e) ;
         }
@@ -109,10 +109,10 @@ public class Util {
             }
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+			GUITARLog.log.error(e);
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+			GUITARLog.log.error(e);
         }
     }
 

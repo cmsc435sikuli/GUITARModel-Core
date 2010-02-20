@@ -23,8 +23,8 @@ import edu.umd.cs.guitar.model.GComponent;
 import edu.umd.cs.guitar.util.GUITARLog;
 
 /**
- * Abstract class for all GUITAR events requiring to run in a separate thread. All
- * subclasses must implement the <code> actionPerformImp </code> methods.
+ * Abstract class for all GUITAR events requiring to run in a separate thread.
+ * All subclasses must implement the <code> actionPerformImp </code> methods.
  * 
  * <p>
  * 
@@ -32,86 +32,116 @@ import edu.umd.cs.guitar.util.GUITARLog;
  */
 public abstract class GThreadEvent implements GEvent {
 
-    /**
+	/**
      * 
      */
-    public GThreadEvent() {
-        super();
-    }
+	public GThreadEvent() {
+		super();
+		if (threadGroup == null) {
+			threadGroup = new DispatchThreadGroup("GThreadEvent group");
+		}
+	}
 
-    @Override
-    public final void perform(GComponent gComponent, Object parameters) {
-        Thread t = new DispatchThread(gComponent, parameters);
-        t.start();
-    }
+	static DispatchThreadGroup threadGroup;
 
-    @Override
-    public final void perform(GComponent gComponent) {
-        Thread t = new DispatchThread(gComponent);
-        t.start();
-    }
+	@Override
+	public final void perform(GComponent gComponent, Object parameters) {
+		Thread t = new Thread(threadGroup, new DispatchThread(gComponent,
+				parameters));
 
-    /**
-     * The actual implementation of the event without parameters
-     * 
-     * <p>
-     * 
-     * @param gComponent
-     */
-    protected abstract void performImpl(GComponent gComponent);
+		t.start();
 
-    /**
-     * 
-     * The actual implementation of the event with parameters
-     * 
-     * @param gComponent
-     * @param parameters
-     */
-    protected abstract void performImpl(GComponent gComponent, Object parameters);
+	}
 
-    /**
-     * A helper class to run action in a separate thread.
-     * 
-     * <p>
-     * 
-     * @author <a href="mailto:baonn@cs.umd.edu"> Bao Nguyen </a>
-     */
-    private class DispatchThread extends Thread {
+	@Override
+	public final void perform(GComponent gComponent) {
+		Thread t = new Thread(threadGroup, new DispatchThread(gComponent));
+		// Thread t = new Thread(new DispatchThread(gComponent));
+		t.start();
+	}
 
-        GComponent gComponent;
-        Object parameters = null;
+	/**
+	 * The actual implementation of the event without parameters
+	 * 
+	 * <p>
+	 * 
+	 * @param gComponent
+	 */
+	protected abstract void performImpl(GComponent gComponent);
 
-        /**
-         * @param gComponent
-         */
-        public DispatchThread(GComponent gComponent) {
-            super();
-            this.gComponent = gComponent;
-        }
+	/**
+	 * 
+	 * The actual implementation of the event with parameters
+	 * 
+	 * @param gComponent
+	 * @param parameters
+	 */
+	protected abstract void performImpl(GComponent gComponent, Object parameters);
 
-        /**
-         * @param gComponent
-         */
-        public DispatchThread(GComponent gComponent, Object parameters) {
-            super();
-            this.gComponent = gComponent;
-            this.parameters = parameters;
-        }
+	/**
+	 * A helper class to group all event dispatching threads
+	 * 
+	 * <p>
+	 * 
+	 * @author <a href="mailto:baonn@cs.umd.edu"> Bao N. Nguyen </a>
+	 * 
+	 */
+	class DispatchThreadGroup extends ThreadGroup {
 
-        @Override
-        public void run() {
-            try {
-                synchronized (gComponent) {
+		/**
+		 * @param name
+		 */
+		public DispatchThreadGroup(String name) {
+			super(name);
+		}
 
-                    if (parameters == null)
-                        performImpl(gComponent);
-                    else
-                        performImpl(gComponent, parameters);
+		@Override
+		public void uncaughtException(Thread t, Throwable e) {
 
-                }
-            } catch (Exception e) {
-                GUITARLog.log.error("Event perform error!!!", e);
-            }
-        }
-    }
+			GUITARLog.log.error(this.getName() + " uncaught Exception!!!", e);
+			throw (RuntimeException) e;
+		}
+	}
+
+	/**
+	 * A helper class to run action in a separate thread.
+	 * 
+	 * <p>
+	 * 
+	 * @author <a href="mailto:baonn@cs.umd.edu"> Bao Nguyen </a>
+	 */
+	// private class DispatchThread extends Thread {
+	private class DispatchThread implements Runnable {
+
+		GComponent gComponent;
+		Object parameters = null;
+
+		/**
+		 * @param gComponent
+		 */
+		public DispatchThread(GComponent gComponent) {
+			super();
+			this.gComponent = gComponent;
+		}
+
+		/**
+		 * @param gComponent
+		 */
+		public DispatchThread(GComponent gComponent, Object parameters) {
+			this.gComponent = gComponent;
+			this.parameters = parameters;
+		}
+
+		@Override
+		public void run() {
+			synchronized (gComponent) {
+
+				if (parameters == null)
+					performImpl(gComponent);
+				else
+					performImpl(gComponent, parameters);
+
+			}
+		}
+	}
 }
