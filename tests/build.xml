@@ -3,7 +3,7 @@
   <!-- Environment Variables -->
 
   <property name="debug" value="true" />
-  <property file="build.properties" />
+  <property file="install/build.properties" />
   <property name="guitar.version" value="3.0" />
 
   <property name="ant.dir" value="${shared.lib.dir}/${ant.lib.dir}" />
@@ -76,7 +76,7 @@
   <target description="Build dependencies" name="build-deps">
     <ant antfile="install/build.xml" target="dist" dir="${basedir}" inheritAll="false">
       <property name="debug" value="true" />
-      <property file="build.properties" />
+      <property file="install/build.properties" />
     </ant>
   </target>
 
@@ -100,7 +100,8 @@
   <target description="Build the unit tests" name="build-tests" depends="build-deps">
     <javac srcdir="${test.dir}" destdir="${test.dir}" debug="${debug}" deprecation="${deprecation}"  debuglevel="vars,lines,source">
       <classpath>
-	<fileset dir="${shared.lib.dir}/guitarlib" includes="**/*.jar" erroronmissingdir="false" />
+	<fileset dir="${shared.lib.dir}" includes="**/*.jar" erroronmissingdir="false" />
+	<fileset dir="${guitar.lib.dir}" includes="**/*.jar" erroronmissingdir="false" />
 	<path refid="dist.lib.path.ref" />
 	<path refid="junit.lib" />
        <!-- <pathelement location="${shared.lib.dir}/easymock-2.5.2.jar"/>

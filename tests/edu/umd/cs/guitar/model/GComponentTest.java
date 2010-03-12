@@ -306,6 +306,14 @@ public class GComponentTest extends TestCase {
         public String getName() {
             throw new UnsupportedOperationException("Not supported yet.");
         }
+		
+		public boolean isEnable(){
+		return false;//real value needs to be put here
+		}
+		
+		public String getTitle(){
+		return null;//real value needs to be put here
+		}
     }
 
 }

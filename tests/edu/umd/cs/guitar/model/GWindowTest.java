@@ -179,6 +179,10 @@ public class GWindowTest extends TestCase {
         public String getName() {
             throw new UnsupportedOperationException("Not supported yet.");
         }
+		
+		public String getTitle(){
+		return null;//real value needs to be put here
+		}
     }
 
 }

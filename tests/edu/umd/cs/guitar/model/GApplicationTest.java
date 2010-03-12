@@ -218,9 +218,9 @@ public class GApplicationTest extends TestCase {
                 expResult = (Object) expSet;
 
                 GWindow mockWindow1 = EasyMock.createMock(GWindow.class);
-                EasyMock.expect(mockWindow1.getFullID()).andReturn("Hello");
+                EasyMock.expect(mockWindow1.getTitle()).andReturn("Hello");//changed from FullID to title because only option for GWindow
                 GWindow mockWindow2 = EasyMock.createMock(GWindow.class);
-                EasyMock.expect(mockWindow2.getFullID()).andReturn("World");
+                EasyMock.expect(mockWindow2.getTitle()).andReturn("World");//changed from FullID to title because only option for GWindow
                 EasyMock.replay(mockWindow1, mockWindow2);
 
                 Set<GWindow> ret = new HashSet();

@@ -47,7 +47,7 @@
 <project name="${module}" default="help" basedir=".">
 <!-- Environment vars-->
 
-<property file="./build.properties" />
+<property file="install/build.properties" />
 <available file="${pre.antfile}" property="filePresent"/>
 <available file="${post.antfile}" property="postFilePresent"/>
 
@@ -64,7 +64,7 @@
 
     <ant antfile="${pre.antfile}"  dir="${basedir}" inheritAll="false">
 	      <property name="debug" value="true" />
-      <property file="./build.properties" />
+      <property file="install/build.properties" />
     </ant>	
   </target>
   
@@ -74,7 +74,7 @@
 
     <ant antfile="${post.antfile}"  dir="${basedir}" inheritAll="false">
 	      <property name="debug" value="true" />
-      <property file="./build.properties" />
+      <property file="install/build.properties" />
     </ant>	
   </target>
   
