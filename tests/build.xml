@@ -1,13 +1,13 @@
-<project name="unit-tests" default="help" basedir="..">
+<project name="unit-tests" default="help" basedir=".">
 
   <!-- Environment Variables -->
 
   <property name="debug" value="true" />
-  <property file="install/build.properties" />
+  <property file="./build.properties" />
   <property name="guitar.version" value="3.0" />
 
   <property name="ant.dir" value="${shared.lib.dir}/${ant.lib.dir}" />
-  <property name="test.dir" value="tests" />
+  <property name="test.dir" value="." />
   <property name="cobertura.dir" value="${shared.lib.dir}/cobertura" />
   <property name="report.dir" value="${test.dir}/reports" />
   <property name="coverage.dir" value="${test.dir}/coverage" />
@@ -74,7 +74,7 @@
   <!-- Build the GUITARModel -->
 
   <target description="Build dependencies" name="build-deps">
-    <ant antfile="install/build.xml" target="dist" dir="${basedir}" inheritAll="false">
+    <ant antfile="../install/build.xml" target="dist" dir="${basedir}" inheritAll="false">
       <property name="debug" value="true" />
       <property file="install/build.properties" />
     </ant>
@@ -205,7 +205,7 @@
   <!-- Clean -->
 
   <target description="Clean the build" name="clean">
-    <ant antfile="install/build.xml" target="clean" dir="${basedir}" inheritAll="false" />
+    <ant antfile="../install/build.xml" target="clean" dir="${basedir}" inheritAll="false" />
 
     <delete dir="${report.dir}" />
     <delete dir="${coverage.dir}" />
