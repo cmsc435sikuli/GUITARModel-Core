@@ -136,8 +136,11 @@
       <classpath>
 	<pathelement location="${jar.dir}/${module}-unit-tests.jar" />
 	<pathelement location="${shared.lib.dir}/log4j-1.2.15.jar" />
-	<pathelement location="${shared.lib.dir}/${guitar.lib.dir}/guitarmodel.jar" />
-        <pathelement location="${shared.lib.dir}/easymock-2.5.2.jar"/>
+       <pathelement location="${guitar.lib.dir}/GUIRipper-Core.jar" />
+       <pathelement location="${guitar.lib.dir}/GUIRipper-Plugin-JFC.jar" />
+       <pathelement location="${guitar.lib.dir}/GUITARModel-Core.jar" />
+       <pathelement location="${guitar.lib.dir}/GUITARModel-Plugin-JFC.jar" />
+       <pathelement location="${shared.lib.dir}/easymock-2.5.2.jar"/>
         <pathelement location="${shared.lib.dir}/easymockclassextension.jar"/>
         <pathelement location="${shared.lib.dir}/cglib-nodep-2.1_3.jar"/> 
       </classpath>
