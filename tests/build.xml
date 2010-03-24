@@ -178,7 +178,7 @@
 		<mkdir dir="${dist.dir}/${dist.doc.dir}" />
 		<mkdir dir="${dist.dir}/${dist.doc.dir}/${ant.project.name}" />
 		<property name="ps" value="${path.separator}"/>		
-        <property name="ydocInstallPath" value="${shared.lib.dir}/${ydocinstall.dir}"/>
+        <property name="ydocInstallPath" value="${ydocinstall.dir}"/>
 		<javadoc sourcepath="${test.dir}" destdir="${dist.dir}/${dist.doc.dir}/${ant.project.name}" >
 			<classpath>
 				<fileset dir="${dist.dir}/${dist.lib.dir}" includes="**/*.jar" erroronmissingdir="false" />
