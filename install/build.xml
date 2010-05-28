@@ -196,7 +196,7 @@
 				<fileset dir="${guitar.lib.dir}" includes="**/*.jar" erroronmissingdir="false" />
 			</classpath>
 			<doclet name="ydoc.doclets.YStandard" path="${ydocInstallPath}/lib/ydoc.jar${ps}${ydocInstallPath}/resources${ps}${ydocInstallPath}/doc">
-				<param name="-author" />
+				<param name="-author"  />
 				<param name="-generic" />
 				<param name="-umlautogen" />
 				<param name="-filterpath" value="${ydocInstallPath}/lib/ydoc.jar" />

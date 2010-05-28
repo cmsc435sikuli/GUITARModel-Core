@@ -46,7 +46,7 @@
 			<schema dir="${xsd.dir}" includes="exeinfo.xsd" />
 			<arg value="-Xcollection-setter-injector" />
 			<produces dir="${src.dir}/${datamodel.package.dir}" includes="**/*" />
-		</xjc> -->
+		</xjc>  -->
 	</target>
 
 </project>
