@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<xs:schema elementFormDefault="qualified"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
 	<xs:annotation>
 		<xs:documentation>
@@ -75,24 +74,20 @@
 
 	<xs:complexType name="PropertyType">
 		<xs:sequence>
-			<xs:element name="Name" type="xs:string" maxOccurs="1"
-				minOccurs="1" />
-			<xs:element name="Value" type="xs:string" maxOccurs="unbounded"
-				minOccurs="1" />
+			<xs:element maxOccurs="1" minOccurs="1" name="Name" type="xs:string"/>
+			<xs:element maxOccurs="unbounded" minOccurs="1" name="Value" type="xs:string"/>
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="AttributesType">
 		<xs:sequence>
-			<xs:element name="Property" type="PropertyType" minOccurs="1"
-				maxOccurs="unbounded" />
+			<xs:element maxOccurs="unbounded" minOccurs="1" name="Property" type="PropertyType"/>
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="ComponentType">
 		<xs:sequence>
-			<xs:element name="Attributes" maxOccurs="1" minOccurs="1"
-				type="AttributesType" />
+			<xs:element maxOccurs="1" minOccurs="1" name="Attributes" type="AttributesType"/>
 		</xs:sequence>
 	</xs:complexType>
 
@@ -100,7 +95,7 @@
 		<xs:complexContent>
 			<xs:extension base="ComponentType">
 				<xs:sequence>
-					<xs:element name="Contents" type="ContentsType" />
+					<xs:element name="Contents" type="ContentsType"/>
 
 				</xs:sequence>
 			</xs:extension>
@@ -110,18 +105,16 @@
 	<xs:complexType name="ContentsType">
 		<xs:sequence>
 			<xs:choice maxOccurs="unbounded" minOccurs="1">
-				<xs:element name="Widget" type="ComponentType" />
-				<xs:element name="Container" type="ContainerType" />
+				<xs:element name="Widget" type="ComponentType"/>
+				<xs:element name="Container" type="ContainerType"/>
 			</xs:choice>
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="GUIType">
 		<xs:sequence>
-			<xs:element name="Window" type="ComponentType" maxOccurs="1"
-				minOccurs="1" />
-			<xs:element name="Container" type="ContainerType"
-				maxOccurs="1" minOccurs="1" />
+			<xs:element maxOccurs="1" minOccurs="1" name="Window" type="ComponentType"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="Container" type="ContainerType"/>
 		</xs:sequence>
 	</xs:complexType>
 
@@ -129,8 +122,7 @@
 	<xs:element name="GUIStructure">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="GUI" type="GUIType" maxOccurs="unbounded"
-					minOccurs="1" />
+				<xs:element maxOccurs="unbounded" minOccurs="1" name="GUI" type="GUIType"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -144,9 +136,9 @@
 	<!-- definition of complex type -->
 	<xs:simpleType name="BooleanType">
 		<xs:restriction base="xs:int">
-			<xs:enumeration value="0" />
-			<xs:enumeration value="1" />
-			<xs:enumeration value="2" />
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--
@@ -159,41 +151,32 @@
 
 	<xs:complexType name="EventType">
 		<xs:sequence>
-			<xs:element name="EventId" type="xs:string" minOccurs="1"
-				maxOccurs="1" />
-			<xs:element name="WidgetId" type="xs:string" minOccurs="1"
-				maxOccurs="1" />
-			<xs:element name="Type" type="xs:string" minOccurs="1"
-				maxOccurs="1" />
-			<xs:element name="Initial" type="xs:boolean" minOccurs="1"
-				maxOccurs="1" />
-			<xs:element name="Action" type="xs:string" minOccurs="1"
-				maxOccurs="1" />
+			<xs:element maxOccurs="1" minOccurs="1" name="EventId" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="WidgetId" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="Type" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="Initial" type="xs:boolean"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="Action" type="xs:string"/>
 
-			<xs:element name="Optional" type="AttributesType"
-				minOccurs="0" maxOccurs="1" />
+			<xs:element maxOccurs="1" minOccurs="0" name="Optional" type="AttributesType"/>
 
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="RowType">
 		<xs:sequence>
-			<xs:element name="E" type="BooleanType" minOccurs="1"
-				maxOccurs="unbounded" />
+			<xs:element maxOccurs="unbounded" minOccurs="1" name="E" type="BooleanType"/>
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="EventsType">
 		<xs:sequence>
-			<xs:element name="Event" type="EventType" minOccurs="1"
-				maxOccurs="unbounded" />
+			<xs:element maxOccurs="unbounded" minOccurs="1" name="Event" type="EventType"/>
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="EventGraphType">
 		<xs:sequence>
-			<xs:element name="Row" type="RowType" minOccurs="1"
-				maxOccurs="unbounded" />
+			<xs:element maxOccurs="unbounded" minOccurs="1" name="Row" type="RowType"/>
 		</xs:sequence>
 	</xs:complexType>
 
@@ -202,47 +185,106 @@
 	<xs:element name="EFG">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Events" type="EventsType" minOccurs="1"
-					maxOccurs="1" />
-				<xs:element name="EventGraph" type="EventGraphType"
-					minOccurs="1" maxOccurs="1" />
+				<xs:element maxOccurs="1" minOccurs="1" name="Events" type="EventsType"/>
+				<xs:element maxOccurs="1" minOccurs="1" name="EventGraph" type="EventGraphType"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 
 	<!-- ++++++++++++++++++++
-		Test case
+		Graph Mapping 
 	++++++++++++++++++++-->
+	
+	
+	<xs:complexType name="PathType"> 
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="1" name="EventId" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+		
+	<xs:complexType name="EdgeMappingType">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="SourceId" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="TargetId" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="Path" type="PathType"/>
+		</xs:sequence>
+	</xs:complexType>
+		
+		
+	<xs:complexType name="EdgeMappingListType">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="EdgeMapping" type="EdgeMappingType"/>
+		</xs:sequence>	
+	</xs:complexType>
+	
+	<xs:complexType name="InitialMappingType">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="EventId" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="Path" type="PathType"/>
+		</xs:sequence>
+	</xs:complexType>
 
-	<!-- definition of complex type -->
+	<xs:complexType name="InitialMappingListType">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="IntialMapping" type="InitialMappingType"/>
+		</xs:sequence>	
+	</xs:complexType>
+
+
+	<xs:complexType name="MappingType">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="0" name="InitialMappingList" type="InitialMappingListType"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="EdgeMappingList" type="EdgeMappingListType"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="Mapping"  >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="1" minOccurs="0" name="InitialMappingList" type="InitialMappingListType"/>
+				<xs:element maxOccurs="1" minOccurs="0" name="EdgeMappingList" type="EdgeMappingListType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	
+<!--
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="1" minOccurs="0" name="MappingEdges" type="MappingEdgeType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+-->
+
+	<!-- ++++++++++++++++++++
+		Test case
+	++++++++++++++++++++--> 
 
 	<!-- definition of complex type -->
 
 	<xs:complexType name="StepType">
 		<xs:sequence>
-			<xs:element name="EventId" type="xs:string" minOccurs="1"
-				maxOccurs="1" />
-			<xs:element name="ReachingStep" type="xs:boolean"
-				minOccurs="1" maxOccurs="1" />
-			<xs:element name="Parameter" type="xs:string" minOccurs="0"
-				maxOccurs="unbounded" />
+			<xs:element maxOccurs="1" minOccurs="1" name="EventId" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="ReachingStep" type="xs:boolean"/>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="Parameter" type="xs:string"/>
 
-			<xs:element name="Optional" type="AttributesType"
-				minOccurs="0" maxOccurs="1" />
+			<xs:element maxOccurs="1" minOccurs="0" name="Optional" type="AttributesType"/>
 				
-			<xs:element ref="GUIStructure" minOccurs="0" maxOccurs="1">
+			<xs:element maxOccurs="1" minOccurs="0" ref="GUIStructure">
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
+	
 
 	<!-- definition of complex elements -->
 
 	<xs:element name="TestCase">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Step" type="StepType" minOccurs="1"
-					maxOccurs="unbounded" />
+				<xs:element maxOccurs="unbounded" minOccurs="1" name="Step" type="StepType"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -253,15 +295,14 @@
 
 	<xs:complexType name="FullComponentType">
 		<xs:sequence>
-			<xs:element name="Window" type="ComponentType" />
-			<xs:element name="Component" type="ComponentType" />
+			<xs:element name="Window" type="ComponentType"/>
+			<xs:element name="Component" type="ComponentType"/>
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="ComponentListType">
 		<xs:sequence>
-			<xs:element name="FullComponent" type="FullComponentType"
-				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="FullComponent" type="FullComponentType"/>
 		</xs:sequence>
 	</xs:complexType>
 
@@ -269,8 +310,8 @@
 	<xs:element name="Configuration">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="IgnoredComponents" type="ComponentListType" />
-				<xs:element name="TerminalComponents" type="ComponentListType" />
+				<xs:element name="IgnoredComponents" type="ComponentListType"/>
+				<xs:element name="TerminalComponents" type="ComponentListType"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -279,8 +320,8 @@
 		<xs:element name="LogWidget">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="OpenWindow" type="ComponentListType" />
-				<xs:element name="CloseWindow" type="ComponentListType" />
+				<xs:element name="OpenWindow" type="ComponentListType"/>
+				<xs:element name="CloseWindow" type="ComponentListType"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -288,4 +329,3 @@
 
 
 </xs:schema>
-

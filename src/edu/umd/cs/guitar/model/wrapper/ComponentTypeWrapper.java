@@ -98,6 +98,11 @@ public class ComponentTypeWrapper {
 			for (String invokedWinTitle : sInvokeList) {
 				GUITypeWrapper invokedWin = wGUIStructure
 						.getGUIByTitle(invokedWinTitle);
+				if (invokedWin == null)
+					continue;
+				
+				if (invokedWin.equals(this.getWindow().getTitle()))
+					continue;
 
 				if (invokedWin != null) {
 					invokedWindows.add(invokedWin);
@@ -323,19 +328,18 @@ public class ComponentTypeWrapper {
 				break;
 			}
 		}
-		
+
 		if (property == null) {
 			property = new PropertyType();
 			property.setName(sName);
 		}
-		
+
 		List<String> lValue = property.getValue();
-		
-		
-		if (!lValue.contains(sValue)){
+
+		if (!lValue.contains(sValue)) {
 			lValue.add(sValue);
 		}
-		
+
 		property.setValue(lValue);
 		lProperty.add(property);
 		attributes.setProperty(lProperty);
@@ -487,7 +491,7 @@ public class ComponentTypeWrapper {
 
 			for (String value : values)
 				this.addValueByName(name, value);
-			
+
 		} else
 
 		if (dComponentType instanceof ContainerType) {
