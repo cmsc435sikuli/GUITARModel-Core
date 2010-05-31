@@ -34,6 +34,9 @@ public class GUITARLog {
 	 */
 	private static final String GUITAR_DEFAULT_LOG = "GUITAR-Default.log";
 	public static Logger log;
+	/**
+	 * Logging level
+	 */
 	private static Level level = Level.DEBUG;
 
 	static {
@@ -48,7 +51,7 @@ public class GUITARLog {
 		FileAppender file = null;
 
 		String logFileName = System.getProperty(LOGFILE_NAME_SYSTEM_PROPERTY);
-		
+
 		if (logFileName == null) {
 			logFileName = GUITAR_DEFAULT_LOG;
 		}
