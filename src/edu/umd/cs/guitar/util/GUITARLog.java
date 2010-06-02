@@ -5,7 +5,6 @@ package edu.umd.cs.guitar.util;
 
 import java.io.IOException;
 
-import org.apache.log4j.Appender;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Level;
@@ -21,10 +20,15 @@ import org.apache.log4j.PatternLayout;
  * 
  */
 public class GUITARLog {
+	
 	/**
 	 * 
 	 */
 	public static final String LOGFILE_NAME_SYSTEM_PROPERTY = "logfile.name";
+	
+	public static Logger log ;//= Logger.getLogger("GUITAR");
+	
+	
 	/**
 	 * 
 	 */
@@ -33,13 +37,14 @@ public class GUITARLog {
 	 * 
 	 */
 	private static final String GUITAR_DEFAULT_LOG = "GUITAR-Default.log";
-	public static Logger log;
+
 	/**
 	 * Logging level
 	 */
 	private static Level level = Level.DEBUG;
 
 	static {
+		
 		log = Logger.getLogger(GUITARLog.class);
 
 		PatternLayout layout = new org.apache.log4j.PatternLayout();
