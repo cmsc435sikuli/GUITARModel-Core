@@ -41,7 +41,8 @@ public class GUITARLog {
 	/**
 	 * Logging level
 	 */
-	private static Level level = Level.DEBUG;
+//	private static Level level = Level.DEBUG;
+	private static Level level = Level.INFO;
 
 	static {
 		
