@@ -22,7 +22,7 @@ package edu.umd.cs.guitar.event;
 import edu.umd.cs.guitar.model.GComponent;
 
 /**
- * Abstract class for all event handlers in GUITAR.
+ * Abstract class for all events in GUITAR.
  * 
  * <p>
  * 
@@ -49,4 +49,17 @@ public interface GEvent {
 	 * @param gComponent
 	 */
 	public abstract void perform(GComponent gComponent);
+	
+	
+	
+	/**
+	 * Check if the event is supported by a <code> GComponent </code>
+	 * 
+	 *  <p>
+	 *   
+	 * @param gComponent
+	 * @return
+	 */
+	public abstract boolean isSupportedBy(GComponent gComponent);
+	
 }
