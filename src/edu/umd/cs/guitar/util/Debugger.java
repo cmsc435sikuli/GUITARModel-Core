@@ -46,7 +46,7 @@ public class Debugger {
      * Pause for a while
      */
     public static void pause(Object msg) {
-        System.err.println("GUITAR DEBUG - Pause: "+msg);
+        System.out.println("GUITAR DEBUG - Pause: "+msg);
         // Pause
         BufferedReader stdin = new BufferedReader(new InputStreamReader(
                 System.in));

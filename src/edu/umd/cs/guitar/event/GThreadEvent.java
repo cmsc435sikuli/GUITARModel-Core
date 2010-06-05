@@ -60,6 +60,21 @@ public abstract class GThreadEvent implements GEvent {
 		t.start();
 	}
 
+//	/*
+//	 * (non-Javadoc)
+//	 * 
+//	 * @see
+//	 * edu.umd.cs.guitar.event.GEvent#perform(edu.umd.cs.guitar.model.GComponent
+//	 * , java.lang.Object, java.lang.Object)
+//	 */
+//	@Override
+//	public void perform(GComponent gComponent, Object parameters,
+//			Object optionalData) {
+//		Thread t = new Thread(threadGroup, new DispatchThread(gComponent));
+//		// Thread t = new Thread(new DispatchThread(gComponent));
+//		t.start();
+//	}
+
 	/**
 	 * The actual implementation of the event without parameters
 	 * 
@@ -115,6 +130,20 @@ public abstract class GThreadEvent implements GEvent {
 
 		GComponent gComponent;
 		Object parameters = null;
+		String optionalData = null;
+
+		/**
+		 * @param gComponent
+		 * @param parameters
+		 * @param optionalData
+		 */
+		public DispatchThread(GComponent gComponent, Object parameters,
+				String optionalData) {
+			super();
+			this.gComponent = gComponent;
+			this.parameters = parameters;
+			this.optionalData = optionalData;
+		}
 
 		/**
 		 * @param gComponent

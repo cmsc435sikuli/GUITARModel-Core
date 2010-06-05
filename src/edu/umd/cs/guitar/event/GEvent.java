@@ -33,11 +33,23 @@ public interface GEvent {
 	
 	
 	/**
+	 * Perform the event with arguments and optional data
+	 * 
+	 * <p>
+	 * 
+	 * @param gComponent
+	 * @param parameters
+	 * @param optionalData
+	 */
+//	public abstract void perform(GComponent gComponent, Object parameters, Object optionalData);
+	
+	/**
 	 * Perform the event with arguments
 	 *  
 	 * <p>
 	 * 
 	 * @param gComponent
+	 * @param parameters
 	 */
 	public abstract void perform(GComponent gComponent, Object parameters);
 
