@@ -19,6 +19,9 @@
  */
 package edu.umd.cs.guitar.event;
 
+import java.util.Hashtable;
+import java.util.List;
+
 import edu.umd.cs.guitar.model.GComponent;
 import edu.umd.cs.guitar.util.GUITARLog;
 
@@ -45,35 +48,38 @@ public abstract class GThreadEvent implements GEvent {
 	static DispatchThreadGroup threadGroup;
 
 	@Override
-	public final void perform(GComponent gComponent, Object parameters) {
+	public void perform(GComponent gComponent, Object parameters,
+			Hashtable<String, List<String>> optionalData) {
 		Thread t = new Thread(threadGroup, new DispatchThread(gComponent,
-				parameters));
+				parameters, optionalData));
 
 		t.start();
 
 	}
 
 	@Override
-	public final void perform(GComponent gComponent) {
-		Thread t = new Thread(threadGroup, new DispatchThread(gComponent));
-		// Thread t = new Thread(new DispatchThread(gComponent));
+	public void perform(GComponent gComponent,
+			Hashtable<String, List<String>> optionalData) {
+		Thread t = new Thread(threadGroup, new DispatchThread(gComponent,
+				optionalData));
 		t.start();
 	}
 
-//	/*
-//	 * (non-Javadoc)
-//	 * 
-//	 * @see
-//	 * edu.umd.cs.guitar.event.GEvent#perform(edu.umd.cs.guitar.model.GComponent
-//	 * , java.lang.Object, java.lang.Object)
-//	 */
-//	@Override
-//	public void perform(GComponent gComponent, Object parameters,
-//			Object optionalData) {
-//		Thread t = new Thread(threadGroup, new DispatchThread(gComponent));
-//		// Thread t = new Thread(new DispatchThread(gComponent));
-//		t.start();
-//	}
+	// /*
+	// * (non-Javadoc)
+	// *
+	// * @see
+	// *
+	// edu.umd.cs.guitar.event.GEvent#perform(edu.umd.cs.guitar.model.GComponent
+	// * , java.lang.Object, java.lang.Object)
+	// */
+	// @Override
+	// public void perform(GComponent gComponent, Object parameters,
+	// Object optionalData) {
+	// Thread t = new Thread(threadGroup, new DispatchThread(gComponent));
+	// // Thread t = new Thread(new DispatchThread(gComponent));
+	// t.start();
+	// }
 
 	/**
 	 * The actual implementation of the event without parameters
@@ -82,7 +88,8 @@ public abstract class GThreadEvent implements GEvent {
 	 * 
 	 * @param gComponent
 	 */
-	protected abstract void performImpl(GComponent gComponent);
+	protected abstract void performImpl(GComponent gComponent,
+			Hashtable<String, List<String>> optionalData);
 
 	/**
 	 * 
@@ -91,7 +98,8 @@ public abstract class GThreadEvent implements GEvent {
 	 * @param gComponent
 	 * @param parameters
 	 */
-	protected abstract void performImpl(GComponent gComponent, Object parameters);
+	protected abstract void performImpl(GComponent gComponent,
+			Object parameters, Hashtable<String, List<String>> optionalData);
 
 	/**
 	 * A helper class to group all event dispatching threads
@@ -130,7 +138,18 @@ public abstract class GThreadEvent implements GEvent {
 
 		GComponent gComponent;
 		Object parameters = null;
-		String optionalData = null;
+		Hashtable<String, List<String>> optionalData = null;
+
+		/**
+		 * @param gComponent
+		 * @param optionalData
+		 */
+		public DispatchThread(GComponent gComponent,
+				Hashtable<String, List<String>> optionalData) {
+			super();
+			this.gComponent = gComponent;
+			this.optionalData = optionalData;
+		}
 
 		/**
 		 * @param gComponent
@@ -138,27 +157,11 @@ public abstract class GThreadEvent implements GEvent {
 		 * @param optionalData
 		 */
 		public DispatchThread(GComponent gComponent, Object parameters,
-				String optionalData) {
+				Hashtable<String, List<String>> optionalData) {
 			super();
 			this.gComponent = gComponent;
 			this.parameters = parameters;
 			this.optionalData = optionalData;
-		}
-
-		/**
-		 * @param gComponent
-		 */
-		public DispatchThread(GComponent gComponent) {
-			super();
-			this.gComponent = gComponent;
-		}
-
-		/**
-		 * @param gComponent
-		 */
-		public DispatchThread(GComponent gComponent, Object parameters) {
-			this.gComponent = gComponent;
-			this.parameters = parameters;
 		}
 
 		@Override
@@ -166,9 +169,9 @@ public abstract class GThreadEvent implements GEvent {
 			synchronized (gComponent) {
 
 				if (parameters == null)
-					performImpl(gComponent);
+					performImpl(gComponent, optionalData);
 				else
-					performImpl(gComponent, parameters);
+					performImpl(gComponent, parameters, optionalData);
 
 			}
 		}

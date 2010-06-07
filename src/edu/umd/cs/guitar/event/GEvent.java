@@ -19,6 +19,9 @@
  */
 package edu.umd.cs.guitar.event;
 
+import java.util.Hashtable;
+import java.util.List;
+
 import edu.umd.cs.guitar.model.GComponent;
 
 /**
@@ -51,7 +54,7 @@ public interface GEvent {
 	 * @param gComponent
 	 * @param parameters
 	 */
-	public abstract void perform(GComponent gComponent, Object parameters);
+	public abstract void perform(GComponent gComponent, Object parameters, Hashtable<String, List<String>> optionalData);
 
 	/**
 	 * Perform the event without argument
@@ -60,8 +63,10 @@ public interface GEvent {
 	 * 
 	 * @param gComponent
 	 */
-	public abstract void perform(GComponent gComponent);
+	public abstract void perform(GComponent gComponent,Hashtable<String, List<String>> optionalData);
 	
+	
+//	public abstract void perform(GComponent gComponent,Hashtable<String, List<String>>);
 	
 	
 	/**

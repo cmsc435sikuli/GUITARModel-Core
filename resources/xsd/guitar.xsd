@@ -88,7 +88,7 @@
 	<xs:complexType name="ComponentType">
 		<xs:sequence>
 			<xs:element maxOccurs="1" minOccurs="1" name="Attributes" type="AttributesType"/>
-			<xs:element maxOccurs="1" minOccurs="0" name="Optional" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="0" name="Optional" type="AttributesType"/>
 		</xs:sequence>
 	</xs:complexType>
 
