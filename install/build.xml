@@ -50,8 +50,7 @@
 	<property file="./build.properties" />
 	<available file="${pre.antfile}" property="filePresent" />
 	<available file="${post.antfile}" property="postFilePresent" />
-
-
+	<property name="debug" value="true" />
 
 	<!-- third party jar files for distribution -->
 	<echo message="./" />
