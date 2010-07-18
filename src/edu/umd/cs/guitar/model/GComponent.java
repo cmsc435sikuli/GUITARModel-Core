@@ -47,6 +47,11 @@ public abstract class GComponent implements GObject {
 
 	private int ID;
 
+	
+	/**
+	 * Container window
+	 */
+	GWindow window;
 	/**
      * 
      */
