@@ -99,9 +99,9 @@ public abstract class GComponent implements GObject {
 		retCompAdapter.addValueByName(GUITARConstants.TYPE_TAG_NAME, sType);
 
 		// Hash code
-		String sHashcode = Integer.toString(this.hashCode());
-		retCompAdapter.addValueByName(GUITARConstants.HASHCODE_TAG_NAME,
-				sHashcode);
+		// String sHashcode = Integer.toString(this.hashCode());
+		// retCompAdapter.addValueByName(GUITARConstants.HASHCODE_TAG_NAME,
+		// sHashcode);
 
 		// Events
 		List<GEvent> lEvents = getEventList();
