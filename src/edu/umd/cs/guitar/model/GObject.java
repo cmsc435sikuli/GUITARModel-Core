@@ -58,7 +58,7 @@ public interface GObject {
      * @param sID
      * @return
      */
-    public GComponent getFirstChildByID(String sID);
+//    public GComponent getFirstChildByID(String sID);
 
     /**
      * Get all GUI properties of the GUI object (in addition to GUITAR

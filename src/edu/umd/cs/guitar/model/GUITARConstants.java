@@ -30,6 +30,8 @@ package edu.umd.cs.guitar.model;
  * 
  */
 public interface GUITARConstants {
+	
+	public static final String COMPONENT_ID_PREFIX = "w";
 
     // ---------------------------
     // Tag names

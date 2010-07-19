@@ -154,16 +154,16 @@ public abstract class GWindow implements GObject {
     // --------------------
     // Get window properties used for GUITAR
     // --------------------
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see edu.umd.cs.guitar.model.GXObject#getFirstChildByID(java.lang.String)
-     */
-    public GComponent getFirstChildByID(String sID) {
-        GComponent container = getContainer();
-        return container.getFirstChildByID(sID);
-    }
+//
+//    /*
+//     * (non-Javadoc)
+//     * 
+//     * @see edu.umd.cs.guitar.model.GXObject#getFirstChildByID(java.lang.String)
+//     */
+//    public GComponent getFirstChildByID(String sID) {
+//        GComponent container = getContainer();
+//        return container.getFirstChildByID(sID);
+//    }
 
     /**
      * Check if the window is a root window or not

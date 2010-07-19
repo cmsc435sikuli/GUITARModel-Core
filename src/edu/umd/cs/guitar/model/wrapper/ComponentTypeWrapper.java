@@ -100,7 +100,7 @@ public class ComponentTypeWrapper {
 						.getGUIByTitle(invokedWinTitle);
 				if (invokedWin == null)
 					continue;
-				
+
 				if (invokedWin.equals(this.getWindow().getTitle()))
 					continue;
 
@@ -255,6 +255,30 @@ public class ComponentTypeWrapper {
 		}
 
 		return new ArrayList<String>();
+	}
+
+	public void setID(String ID) {
+
+		AttributesType attributes = this.dComponentType.getAttributes();
+		if (attributes == null) {
+			return;
+		}
+
+		List<PropertyType> lProperty = attributes.getProperty();
+		if (lProperty == null)
+			lProperty = new ArrayList<PropertyType>();
+
+		for (PropertyType p : lProperty) {
+			if (GUITARConstants.ID_TAG_NAME.equals(p.getName())) {
+				lProperty.remove(p);
+				break;
+			}
+		}
+
+		PropertyType pID = factory.createPropertyType();
+		pID.setName(GUITARConstants.ID_TAG_NAME);
+		pID.getValue().add(ID);
+		lProperty.add(0, pID);
 	}
 
 	/**
@@ -739,7 +763,8 @@ public class ComponentTypeWrapper {
 	public void updateID() {
 
 		updateValueByName(GUITARConstants.ID_TAG_NAME,
-				GComponent.COMPONENT_ID_PREFIX + Integer.toString(ID_COUNTER++));
+				GUITARConstants.COMPONENT_ID_PREFIX
+						+ Integer.toString(ID_COUNTER++));
 
 		if (dComponentType instanceof ContainerType) {
 			ContainerType container = (ContainerType) dComponentType;
