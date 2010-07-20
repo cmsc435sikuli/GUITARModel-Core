@@ -22,7 +22,7 @@ package edu.umd.cs.guitar.model;
 
 /**
  * 
- * Putting all GUITAR constants in one place 
+ * Putting all GUITAR constants in one place
  * 
  * <p>
  * 
@@ -30,96 +30,95 @@ package edu.umd.cs.guitar.model;
  * 
  */
 public interface GUITARConstants {
-	
+
 	public static final String COMPONENT_ID_PREFIX = "w";
 
-    // ---------------------------
-    // Tag names
-    // ---------------------------
+	// ---------------------------
+	// Tag names
+	// ---------------------------
 
-    // final static String TITLE_TAG_NAME = "Title";
-    final static String ID_TAG_NAME = "ID";
-    final static String TITLE_TAG_NAME = "Title";
-//    final static String FULL_ID_TAG_NAME = "FullID";
-    
-    
+	// final static String TITLE_TAG_NAME = "Title";
+	final static String ID_TAG_NAME = "ID";
+	final static String TITLE_TAG_NAME = "Title";
 
-    final static String ROOTWINDOW_TAG_NAME = "Rootwindow";
-    final static String MODAL_TAG_NAME = "Modal";
+	// final static String FULL_ID_TAG_NAME = "FullID";
 
-    final static String CLASS_TAG_NAME = "Class";
-    final static String TYPE_TAG_NAME = "Type";
-    final static String HASHCODE_TAG_NAME = "Hashcode";
+	final static String ROOTWINDOW_TAG_NAME = "Rootwindow";
+	final static String MODAL_TAG_NAME = "Modal";
 
-    final static String INVOKELIST_TAG_NAME = "Invokelist";
-    final static String EVENT_TAG_NAME = "ReplayableAction";
+	final static String CLASS_TAG_NAME = "Class";
+	final static String TYPE_TAG_NAME = "Type";
+	final static String X_TAG_NAME = "X";
+	final static String Y_TAG_NAME = "Y";
 
-    // ------------------------------
-    // Define the suffix to a pattern of ignored objects
-    // ------------------------------
-    public static final String NAME_PATTERN_SUFFIX = "~";
+	final static String HASHCODE_TAG_NAME = "Hashcode";
 
-    public static final String NAME_SEPARATOR = "_";
+	final static String INVOKELIST_TAG_NAME = "Invokelist";
+	final static String EVENT_TAG_NAME = "ReplayableAction";
 
-    public static final String IGNORE_COMMENT_PREFIX = "//";
+	// ------------------------------
+	// Define the suffix to a pattern of ignored objects
+	// ------------------------------
+	public static final String NAME_PATTERN_SUFFIX = "~";
 
-    public static final String CMD_ARGUMENT_SEPARATOR = ":";
+	public static final String NAME_SEPARATOR = "_";
 
-    // ------------------------------
-    // Definitions for the different GUITAR event types.
-    // ------------------------------
+	public static final String IGNORE_COMMENT_PREFIX = "//";
 
-    /**
-     * Close the current window
-     */
-    public static String TERMINAL = "TERMINAL";
+	public static final String CMD_ARGUMENT_SEPARATOR = ":";
 
-    // 
-    /**
-     * Expand a new menu/tab/tree node for more components
-     */
-    public static String EXPAND = "EXPAND";
+	// ------------------------------
+	// Definitions for the different GUITAR event types.
+	// ------------------------------
 
-    /**
-     * Open modal window(s)
-     */
-    public static String RESTRICED_FOCUS = "RESTRICED FOCUS";
+	/**
+	 * Close the current window
+	 */
+	public static String TERMINAL = "TERMINAL";
 
-    /**
-     * Open modeless window(s)
-     */
-    public static String UNRESTRICED_FOCUS = "UNRESTRICED FOCUS";
+	// 
+	/**
+	 * Expand a new menu/tab/tree node for more components
+	 */
+	public static String EXPAND = "EXPAND";
 
-    /**
-     * Other events not affect the GUI structure
-     */
-    public static String SYSTEM_INTERACTION = "SYSTEM INTERACTION";
+	/**
+	 * Open modal window(s)
+	 */
+	public static String RESTRICED_FOCUS = "RESTRICED FOCUS";
+
+	/**
+	 * Open modeless window(s)
+	 */
+	public static String UNRESTRICED_FOCUS = "UNRESTRICED FOCUS";
+
+	/**
+	 * Other events not affect the GUI structure
+	 */
+	public static String SYSTEM_INTERACTION = "SYSTEM INTERACTION";
 
 	/**
 	 * Activated by a call from parent's node
 	 */
-//	public static String ACTIVATED_BY_PARENT = "ACTIVATED BY PARENT";
-    
-	
-    // ------------------------------
-    // Definitions for the different EFG edge types
-    // ------------------------------
+	// public static String ACTIVATED_BY_PARENT = "ACTIVATED BY PARENT";
 
-    /**
-     * No follow realationship between 2 events
-     */
-    public static final int NO_EDGE = 0;
+	// ------------------------------
+	// Definitions for the different EFG edge types
+	// ------------------------------
 
-    /**
-     * Normal edges
-     */
-    public static final int FOLLOW_EDGE = 1;
-    
-    /**
-     * The edges used to reach an event  
-     */
-    public static final int REACHING_EDGE = 2;
+	/**
+	 * No follow realationship between 2 events
+	 */
+	public static final int NO_EDGE = 0;
 
-    
-    
+	/**
+	 * Normal edges
+	 */
+	public static final int FOLLOW_EDGE = 1;
+
+	/**
+	 * The edges used to reach an event
+	 */
+	public static final int REACHING_EDGE = 2;
+
 }

@@ -42,16 +42,16 @@ public abstract class GComponent implements GObject {
 	/**
      * 
      */
-	
+
 	private static int ID_COUNTER = 0;
 
 	private int ID;
 
-	
 	/**
 	 * Container window
 	 */
 	GWindow window;
+
 	/**
      * 
      */
@@ -83,9 +83,9 @@ public abstract class GComponent implements GObject {
 
 		ComponentTypeWrapper retCompAdapter = new ComponentTypeWrapper(retComp);
 
-//		// Add ID
-//		String ID = getID();
-//		retCompAdapter.addValueByName(GUITARConstants.ID_TAG_NAME, ID);
+		// // Add ID
+		// String ID = getID();
+		// retCompAdapter.addValueByName(GUITARConstants.ID_TAG_NAME, ID);
 
 		// String sID = getFullID();
 		// retCompAdapter.addValueByName(GUITARConstants.FULL_ID_TAG_NAME, sID);
@@ -97,6 +97,14 @@ public abstract class GComponent implements GObject {
 		// Type
 		String sType = getTypeVal();
 		retCompAdapter.addValueByName(GUITARConstants.TYPE_TAG_NAME, sType);
+
+		// int x = getX();
+		// retCompAdapter.addValueByName(GUITARConstants.X_TAG_NAME, Integer
+		// .toString(x));
+		//
+		// int y = getY();
+		// retCompAdapter.addValueByName(GUITARConstants.Y_TAG_NAME, Integer
+		// .toString(y));
 
 		// Hash code
 		// String sHashcode = Integer.toString(this.hashCode());
@@ -126,21 +134,21 @@ public abstract class GComponent implements GObject {
 		return retComp;
 	}
 
-//	/**
-//	 * Generate ID for the component.
-//	 * 
-//	 * <p>
-//	 * 
-//	 * GUITAR uses Java default hashing algorithm on property names and values
-//	 * to generate ID for the component.
-//	 * 
-//	 * @return
-//	 */
-//	public String getID() {
-//		// return (COMPONENT_ID_PREFIX + (hashCode()));
-//		// return (COMPONENT_ID_PREFIX + (ID_COUNTER++));
-//		return (COMPONENT_ID_PREFIX + this.ID);
-//	}
+	// /**
+	// * Generate ID for the component.
+	// *
+	// * <p>
+	// *
+	// * GUITAR uses Java default hashing algorithm on property names and values
+	// * to generate ID for the component.
+	// *
+	// * @return
+	// */
+	// public String getID() {
+	// // return (COMPONENT_ID_PREFIX + (hashCode()));
+	// // return (COMPONENT_ID_PREFIX + (ID_COUNTER++));
+	// return (COMPONENT_ID_PREFIX + this.ID);
+	// }
 
 	/*
 	 * (non-Javadoc)
@@ -235,29 +243,30 @@ public abstract class GComponent implements GObject {
 	 */
 	public abstract boolean isEnable();
 
-//	/*
-//	 * (non-Javadoc)
-//	 * 
-//	 * @see edu.umd.cs.guitar.model.GXObject#getFirstChildByID(java.lang.String)
-//	 */
-//	@Override
-//	public GComponent getFirstChildByID(String sID) {
-//		{
-//			if (sID.equals(this.getID()))
-//				return this;
-//
-//			List<GComponent> gChildren = getChildren();
-//			GComponent result = null;
-//
-//			for (GComponent gChild : gChildren) {
-//				result = gChild.getFirstChildByID(sID);
-//				if (result != null)
-//					return result;
-//			}
-//			return null;
-//
-//		}
-//	}
+	// /*
+	// * (non-Javadoc)
+	// *
+	// * @see
+	// edu.umd.cs.guitar.model.GXObject#getFirstChildByID(java.lang.String)
+	// */
+	// @Override
+	// public GComponent getFirstChildByID(String sID) {
+	// {
+	// if (sID.equals(this.getID()))
+	// return this;
+	//
+	// List<GComponent> gChildren = getChildren();
+	// GComponent result = null;
+	//
+	// for (GComponent gChild : gChildren) {
+	// result = gChild.getFirstChildByID(sID);
+	// if (result != null)
+	// return result;
+	// }
+	// return null;
+	//
+	// }
+	// }
 
 	/**
 	 * 

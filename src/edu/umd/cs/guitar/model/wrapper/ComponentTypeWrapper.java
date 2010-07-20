@@ -140,9 +140,35 @@ public class ComponentTypeWrapper {
 			}
 
 		}
+	}
+	
+	/**
+	 * Parse Data without invoke list
+	 */
+	public void parseData(){
+		// Create a children list
+		if (dComponentType instanceof ContainerType) {
 
+			List<ComponentType> dChildrenList = ((ContainerType) dComponentType)
+					.getContents().getWidgetOrContainer();
+			if (dChildrenList != null) {
+				this.children = new ArrayList<ComponentTypeWrapper>();
+
+				for (ComponentType dChild : dChildrenList) {
+					ComponentTypeWrapper wChild = new ComponentTypeWrapper(
+							dChild);
+					wChild.setParent(this);
+					wChild.setWindow(this.window);
+					wChild.parseData();
+					children.add(wChild);
+				}
+
+			}
+
+		}
 	}
 
+	
 	/**
 	 * @return the parent
 	 */

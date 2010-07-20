@@ -32,41 +32,55 @@ import edu.umd.cs.guitar.model.data.PropertyType;
  */
 public interface GObject {
 
-    static ObjectFactory factory = new ObjectFactory();
+	static ObjectFactory factory = new ObjectFactory();
 
-    /**
-     * Get Title of the component from a combination of its GUI properties
-     * 
-     * @return
-     */
-    public String getTitle();
+	/**
+	 * Get Title of the component from a combination of its GUI properties
+	 * 
+	 * @return
+	 */
+	public String getTitle();
 
-//    /**
-//     * Get ID of the component (in Title tag of GUI file)
-//     * 
-//     * @return
-//     */
-//    public String getName();
+	/**
+	 * Get x coordinate of the object
+	 * 
+	 * @return
+	 */
+	public abstract int getX();
 
-    /**
-     * 
-     * Get children by its id, the searching scope includes the component
-     * itself.
-     * 
-     * <p>
-     * 
-     * @param sID
-     * @return
-     */
-//    public GComponent getFirstChildByID(String sID);
+	/**
+	 * Get y coordinate of the object
+	 * 
+	 * @return
+	 */
+	public abstract int getY();
 
-    /**
-     * Get all GUI properties of the GUI object (in addition to GUITAR
-     * properties)
-     * 
-     * <p>
-     * 
-     * @return
-     */
-    public List<PropertyType> getGUIProperties();
+	// /**
+	// * Get ID of the component (in Title tag of GUI file)
+	// *
+	// * @return
+	// */
+	// public String getName();
+
+	/**
+	 * 
+	 * Get children by its id, the searching scope includes the component
+	 * itself.
+	 * 
+	 * <p>
+	 * 
+	 * @param sID
+	 * @return
+	 */
+	// public GComponent getFirstChildByID(String sID);
+
+	/**
+	 * Get all GUI properties of the GUI object (in addition to GUITAR
+	 * properties)
+	 * 
+	 * <p>
+	 * 
+	 * @return
+	 */
+	public List<PropertyType> getGUIProperties();
 }
