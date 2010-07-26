@@ -24,6 +24,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import edu.umd.cs.guitar.model.GHashcodeGenerator;
 import edu.umd.cs.guitar.model.GUITARConstants;
 import edu.umd.cs.guitar.model.data.AttributesType;
 import edu.umd.cs.guitar.model.data.ComponentType;
@@ -395,6 +396,17 @@ public class GUITypeWrapper {
 		ComponentType container = dGUIType.getContainer();
 		ComponentTypeWrapper containerA = new ComponentTypeWrapper(container);
 		containerA.updateID();
+	}
+	
+	/**
+	 * Generate ID for widgets based on a hashcode generator
+	 * 
+	 * @param hashcodeGenerator
+	 */
+	public void generateID(GHashcodeGenerator hashcodeGenerator) {
+		ComponentType container = dGUIType.getContainer();
+		ComponentTypeWrapper containerA = new ComponentTypeWrapper(container);
+		containerA.generateID(hashcodeGenerator, this);
 	}
 
 }

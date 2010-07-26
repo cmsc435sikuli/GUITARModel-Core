@@ -142,11 +142,11 @@ public class ComponentTypeWrapper {
 
 		}
 	}
-	
+
 	/**
 	 * Parse Data without invoke list
 	 */
-	public void parseData(){
+	public void parseData() {
 		// Create a children list
 		if (dComponentType instanceof ContainerType) {
 
@@ -169,7 +169,6 @@ public class ComponentTypeWrapper {
 		}
 	}
 
-	
 	/**
 	 * @return the parent
 	 */
@@ -307,7 +306,7 @@ public class ComponentTypeWrapper {
 		pID.getValue().add(ID);
 		lProperty.add(0, pID);
 	}
-	
+
 	/**
 	 * Set a property of child object
 	 * 
@@ -816,6 +815,35 @@ public class ComponentTypeWrapper {
 	 */
 	public static void setID_COUNTER(int nID_COUNTER) {
 		ID_COUNTER = nID_COUNTER;
+	}
+
+	/**
+	 * @param hashcodeGenerator
+	 * @param guiTypeWrapper
+	 */
+	public void generateID(GHashcodeGenerator hashcodeGenerator,
+			GUITypeWrapper guiTypeWrapper) {
+
+		long hashcode = hashcodeGenerator.getHashcodeFromData(dComponentType,
+				guiTypeWrapper.getData());
+
+		setID(GUITARConstants.COMPONENT_ID_PREFIX + hashcode);
+
+		if (dComponentType instanceof ContainerType) {
+			ContainerType container = (ContainerType) dComponentType;
+			ContentsType contents = container.getContents();
+			if (contents == null)
+				return;
+			List<ComponentType> lChildren = contents.getWidgetOrContainer();
+			List<ComponentType> lNewChildren = new ArrayList<ComponentType>();
+
+			for (ComponentType child : lChildren) {
+				ComponentTypeWrapper childA = new ComponentTypeWrapper(child);
+				childA.generateID(hashcodeGenerator, guiTypeWrapper);
+				lNewChildren.add(childA.getDComponentType());
+			}
+		}
+
 	}
 
 }

@@ -24,6 +24,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import edu.umd.cs.guitar.model.GHashcodeGenerator;
 import edu.umd.cs.guitar.model.data.AttributesType;
 import edu.umd.cs.guitar.model.data.GUIStructure;
 import edu.umd.cs.guitar.model.data.GUIType;
@@ -226,6 +227,19 @@ public class GUIStructureWrapper {
 			wGUI.updateID();
 		}
 	}
+	
+	/**
+	 * Generate ID for widgets based on a hashcode generator
+	 * 
+	 * @param hashcodeGenerator
+	 */
+	public void generateID(GHashcodeGenerator hashcodeGenerator) {
+		for (GUIType dGUI : dGUIStructure.getGUI()) {
+			GUITypeWrapper wGUI = new GUITypeWrapper(dGUI);
+			wGUI.generateID(hashcodeGenerator);
+		}
+	}
+	
 
 	public ComponentTypeWrapper getComponentBySignature(AttributesType signature) {
 
