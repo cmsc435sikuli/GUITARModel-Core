@@ -32,7 +32,7 @@ public class GUITARLog {
 	/**
 	 * 
 	 */
-	private static final String LOG_LAYOUT_PATTER = "%-6r [%t] %-5p - %m%n";
+	private static final String LOG_LAYOUT_PATTERN = "%-6r [%t] %-5p - %m%n";
 	/**
 	 * 
 	 */
@@ -46,10 +46,10 @@ public class GUITARLog {
 
 	static {
 		
-		log = Logger.getLogger(GUITARLog.class);
+		log = Logger.getLogger("GUITARLog");
 
 		PatternLayout layout = new org.apache.log4j.PatternLayout();
-		layout.setConversionPattern(LOG_LAYOUT_PATTER);
+		layout.setConversionPattern(LOG_LAYOUT_PATTERN);
 
 		ConsoleAppender stdout = new ConsoleAppender(layout);
 		log.addAppender(stdout);
@@ -70,6 +70,7 @@ public class GUITARLog {
 		log.addAppender(file);
 
 		log.setLevel(level);
+		
 	}
 
 }

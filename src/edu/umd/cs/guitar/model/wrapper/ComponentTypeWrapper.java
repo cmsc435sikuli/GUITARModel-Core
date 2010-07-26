@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Set;
 
 import edu.umd.cs.guitar.model.GComponent;
+import edu.umd.cs.guitar.model.GHashcodeGenerator;
 import edu.umd.cs.guitar.model.GUITARConstants;
 import edu.umd.cs.guitar.model.data.AttributesType;
 import edu.umd.cs.guitar.model.data.ComponentType;
@@ -306,7 +307,7 @@ public class ComponentTypeWrapper {
 		pID.getValue().add(ID);
 		lProperty.add(0, pID);
 	}
-
+	
 	/**
 	 * Set a property of child object
 	 * 

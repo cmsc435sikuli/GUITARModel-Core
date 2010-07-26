@@ -98,13 +98,13 @@ public abstract class GComponent implements GObject {
 		String sType = getTypeVal();
 		retCompAdapter.addValueByName(GUITARConstants.TYPE_TAG_NAME, sType);
 
-		// int x = getX();
-		// retCompAdapter.addValueByName(GUITARConstants.X_TAG_NAME, Integer
-		// .toString(x));
-		//
-		// int y = getY();
-		// retCompAdapter.addValueByName(GUITARConstants.Y_TAG_NAME, Integer
-		// .toString(y));
+		int x = getX();
+		retCompAdapter.addValueByName(GUITARConstants.X_TAG_NAME, Integer
+				.toString(x));
+
+		int y = getY();
+		retCompAdapter.addValueByName(GUITARConstants.Y_TAG_NAME, Integer
+				.toString(y));
 
 		// Hash code
 		// String sHashcode = Integer.toString(this.hashCode());
