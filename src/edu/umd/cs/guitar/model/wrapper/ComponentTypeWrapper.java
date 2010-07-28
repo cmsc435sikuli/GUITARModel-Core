@@ -390,6 +390,12 @@ public class ComponentTypeWrapper {
 			lValue.add(sValue);
 		}
 
+//		if(lProperty==null){
+//			attributes.setProperty(new ArrayList<PropertyType>());
+//		}
+//		
+//		attributes.getProperty().add(property);
+		
 		property.setValue(lValue);
 		lProperty.add(property);
 		attributes.setProperty(lProperty);
