@@ -283,6 +283,23 @@ public class GUIStructureWrapper {
 	}
 
 	/**
+	 * Get the list of root windows
+	 * 
+	 * @return
+	 */
+	public Set<GUIType> getRootGUI() {
+
+		Set<GUIType> rootGUI = new HashSet<GUIType>();
+
+		for (GUIType dGUI : dGUIStructure.getGUI()) {
+			GUITypeWrapper wGUI = new GUITypeWrapper(dGUI);
+			if (wGUI.isRoot())
+				rootGUI.add(dGUI);
+		}
+		return rootGUI;
+
+	}	
+	/**
 	 * @return
 	 */
 	public List<GUITypeWrapper> getGUIs() {

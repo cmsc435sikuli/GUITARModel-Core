@@ -29,6 +29,39 @@ package edu.umd.cs.guitar.exception;
 public abstract class GException extends RuntimeException {
 
     /**
+	 * @param message
+	 * @param cause
+	 */
+	public GException(String message, Throwable cause) {
+		super(message, cause);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param cause
+	 */
+	public GException(Throwable cause) {
+		super(cause);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	public GException() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param message
+	 */
+	public GException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
 	 * 
 	 */
     private static final long serialVersionUID = 523966195230780507L;

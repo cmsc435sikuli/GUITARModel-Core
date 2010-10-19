@@ -126,9 +126,9 @@
 				<xs:element maxOccurs="unbounded" minOccurs="1" name="GUI" type="GUIType"/>
 			</xs:sequence>
 		</xs:complexType>
-	</xs:element>
+	</xs:element> 
 
-
+ 
 	<!--+++++++++++++++++++++++++
 		EFG 
 	+++++++++++++++++++++++++-->
@@ -285,6 +285,7 @@
 	<xs:element name="TestCase">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element maxOccurs="1" minOccurs="0" ref="GUIStructure"/>
 				<xs:element maxOccurs="unbounded" minOccurs="1" name="Step" type="StepType"/>
 			</xs:sequence>
 		</xs:complexType>
