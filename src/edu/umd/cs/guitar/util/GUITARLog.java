@@ -105,13 +105,25 @@ public class GUITARLog {
    }
 
    /**
+    * Log the given string 'str' as Debug
+    *
+    * @return
+    */
+   public static
+   void Debug(String str) {
+      if (Level.DEBUG.isGreaterOrEqual(GUITARLog.level)) {
+         System.out.println("Debug: " + str);
+      }
+   }
+
+   /**
     * Log the given string 'str' as Info.
     *
     * @return
     */
    public static
    void Info(String str) {
-      if (Level.INFO == GUITARLog.level) {
+      if (Level.INFO.isGreaterOrEqual(GUITARLog.level)) {
          System.out.println("Info: " + str);
       }
    }
@@ -123,11 +135,9 @@ public class GUITARLog {
     */
    public static
    void Error(String str) {
-      if (Level.INFO == GUITARLog.level) {
+      if (Level.ERROR.isGreaterOrEqual(GUITARLog.level)) {
          System.out.println("Error: " + str);
       }
    }
 
-
-   // End of class
-}
+} // End of class
