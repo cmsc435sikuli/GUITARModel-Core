@@ -110,8 +110,8 @@ public class GUITARLog {
     * @return
     */
    public static
-   void Info(Level level, String str) {
-      if (level == GUITARLog.level) {
+   void Info(String str) {
+      if (Level.INFO == GUITARLog.level) {
          System.out.println("Info: " + str);
       }
    }
@@ -123,7 +123,9 @@ public class GUITARLog {
     */
    public static
    void Error(String str) {
-      System.out.println("Error: " + str);
+      if (Level.INFO == GUITARLog.level) {
+         System.out.println("Error: " + str);
+      }
    }
 
 
