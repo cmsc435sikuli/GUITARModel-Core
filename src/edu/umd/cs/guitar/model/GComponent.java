@@ -112,10 +112,7 @@ public abstract class GComponent implements GObject {
 		// sHashcode);
 
 		// Events
-		List<GEvent> lEvents = getEventList();
-		for (GEvent event : lEvents)
-			retCompAdapter.addValueByName(GUITARConstants.EVENT_TAG_NAME, event
-					.getClass().getName());
+        extractEvents(retCompAdapter);
 
 		// Other GUI Properties
 		retComp = retCompAdapter.getDComponentType();
@@ -133,6 +130,14 @@ public abstract class GComponent implements GObject {
 
 		return retComp;
 	}
+
+    protected void extractEvents(ComponentTypeWrapper componentAdapter)
+    {
+		List<GEvent> lEvents = getEventList();
+		for (GEvent event : lEvents)
+			componentAdapter.addValueByName(
+                GUITARConstants.EVENT_TAG_NAME, event.getClass().getName());
+    }
 
 	// /**
 	// * Generate ID for the component.
