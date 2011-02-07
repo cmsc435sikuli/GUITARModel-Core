@@ -97,6 +97,7 @@
   <target description="clean project" name="clean">
     <delete dir="${bin.dir}" />
     <delete dir="${generated.dir}" />
+    <delete file="${jar.dir}/${module}.jar" />
   </target>
 
   <!-- Distribution related functions -->
