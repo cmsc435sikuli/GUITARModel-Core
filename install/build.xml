@@ -47,18 +47,9 @@
 <project name="GUITARModel-Core" basedir=".." default="help">
 
   <property name="module" value="GUITARModel-Core" />
-  <property name="root.dir" value=".." />
-  <property name="src.dir" value="src" />
+  <import file="../../shared/ant/properties.xml" />
   <property name="generated.dir"
             value="${src.dir}/edu/umd/cs/guitar/model/data" />
-  <property name="bin.dir" value="bin" />
-  <property name="jar.dir" value="${root.dir}/jars" />
-  <property name="shared.lib.dir" value="${root.dir}/shared" />
-  <property name="ant.dir" value="${shared.lib.dir}/ant/lib" />
-  <property name="resources.dir" value="resources" />
-  <property name="coverage.dir" value="${root.dir}/coverage" />
-  <property name="dependency_list" value="" />
-  <property name="classpath" value="" />
 
   <target name="generate">
     <taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
@@ -77,33 +68,6 @@
     </xjc>
   </target>
 
-  <target name="build" depends="generate">
-    <ant antfile="${shared.lib.dir}/ant/build.xml" target="common-build" />
-  </target>
-
-  <target name="doc">
-    <ant antfile="${shared.lib.dir}/ant/build.xml" target="common-doc" />
-  </target>
-
-  <target name="clean">
-    <ant antfile="${shared.lib.dir}/ant/build.xml" target="common-clean" />
-    <delete dir="${generated.dir}" />
-  </target>
-
-  <target name="dist">
-    <ant antfile="${shared.lib.dir}/ant/build.xml" target="dist" />
-  </target>
-
-  <target name="depends">
-    <ant antfile="${shared.lib.dir}/ant/build.xml" target="depends" />
-  </target>
-
-  <target name="all">
-    <ant antfile="${shared.lib.dir}/ant/build.xml" target="all" />
-  </target>
-
-  <target name="help">
-    <ant antfile="${shared.lib.dir}/ant/build.xml" target="help" />
-  </target>
+  <import file="../../shared/ant/default.xml" />
 
 </project>
