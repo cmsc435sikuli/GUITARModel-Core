@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
    Copyright (c) 2009. The GUITAR group at the University of Maryland. Names of owners 
    of this group may be obtained by sending an e-mail to atif@cs.umd.edu
 
@@ -18,10 +18,10 @@
    DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 
-<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
    Purpose:  Ant build file for GUITAR-RIPPER.
 
    Ant-Download: http://jakarta.apache.org/ant
@@ -42,20 +42,21 @@
    $Author: Bao N. Nguyen$
    
 
-   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
-<project name="GUITARModel-Core" basedir="../.." default="dist">
+<project name="GUITARModel-Core" basedir=".." default="help">
 
   <property name="module" value="GUITARModel-Core" />
-  <property name="src.dir" value="${module}/src" />
+  <property name="root.dir" value=".." />
+  <property name="src.dir" value="src" />
   <property name="generated.dir"
             value="${src.dir}/edu/umd/cs/guitar/model/data" />
-  <property name="bin.dir" value="${module}/bin" />
-  <property name="jar.dir" value="./jars" />
-  <property name="shared.lib.dir" value="./shared" />
+  <property name="bin.dir" value="bin" />
+  <property name="jar.dir" value="${root.dir}/jars" />
+  <property name="shared.lib.dir" value="${root.dir}/shared" />
   <property name="ant.dir" value="${shared.lib.dir}/ant/lib" />
-  <property name="resources.dir" value="${module}/resources" />
-  <property name="coverage.dir" value="./coverage" />
+  <property name="resources.dir" value="resources" />
+  <property name="coverage.dir" value="${root.dir}/coverage" />
 
   <target name="generate">
     <taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
@@ -83,9 +84,7 @@
         <fileset dir="${jar.dir}" includes="**/*.jar" />
       </classpath>
     </javac>
-  </target>
 
-  <target name="dist" depends="build">
     <jar destfile="${jar.dir}/${module}.jar">
       <fileset dir="${bin.dir}" includes="**/*.class" />
     </jar>
@@ -98,6 +97,27 @@
   <target description="clean project" name="clean">
     <delete dir="${bin.dir}" />
     <delete dir="${generated.dir}" />
+  </target>
+
+  <!-- Distribution related functions -->
+  <target name="dist">
+    <antcall target="depends" />
+    <antcall target="build" />
+    <antcall target="doc" />
+  </target>
+
+  <!-- This module does not depend on anyone -->
+  <target name="depends" />
+
+  <target name="help">
+    <echo message="Available targets for ${module}:" />
+    <echo message="  help:    Displays this help." />
+    <echo message="  clean:   Removes output files created by other targets." />
+    <echo message="  doc:     Generates documentation." />
+    <echo message="  build:   Builds source code and library." />
+    <echo message="  depends: Builds dependencies." />
+    <echo message="  dist:    Builds source code, libraries, and dependencies." />
+    <echo message="  install: Installs this library and dependencies." />
   </target>
 
 </project>
