@@ -51,6 +51,10 @@
   <property name="generated.dir"
             value="${src.dir}/edu/umd/cs/guitar/model/data" />
 
+  <path id="classpath">
+    <fileset file="${log4j}" />
+  </path>
+
   <target name="generate">
     <taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
       <classpath>
