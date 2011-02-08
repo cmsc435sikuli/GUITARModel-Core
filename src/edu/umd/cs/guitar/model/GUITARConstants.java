@@ -20,6 +20,11 @@ package edu.umd.cs.guitar.model;
  *	THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
 
+import java.util.LinkedList;
+import java.util.List;
+
+import edu.umd.cs.guitar.model.wrapper.AttributesTypeWrapper;
+
 /**
  * 
  * Putting all GUITAR constants in one place
@@ -30,6 +35,13 @@ package edu.umd.cs.guitar.model;
  * 
  */
 public interface GUITARConstants {
+
+	public static List<AttributesTypeWrapper> terminalWidgetSignature =
+        new LinkedList<AttributesTypeWrapper>();
+    public static List<AttributesTypeWrapper> ignoredWidgetSignature =
+        new LinkedList<AttributesTypeWrapper>();
+
+	public static final String LOG4J_PROPERTIES_FILE = "log4j.properties";
 
 	public static final String COMPONENT_ID_PREFIX = "w";
 
