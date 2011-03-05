@@ -19,6 +19,19 @@
  */
 package edu.umd.cs.guitar.model;
 
+import java.awt.AWTException;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
+
+import java.io.File;
+import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +43,7 @@ import edu.umd.cs.guitar.model.data.ContentsType;
 import edu.umd.cs.guitar.model.data.PropertyType;
 import edu.umd.cs.guitar.model.wrapper.ComponentTypeWrapper;
 import edu.umd.cs.guitar.model.wrapper.PropertyTypeWrapper;
+
 
 /**
  * Abstract class for accessible components (widget/container) in GUITAR
@@ -105,6 +119,14 @@ public abstract class GComponent implements GObject {
 		int y = getY();
 		retCompAdapter.addValueByName(GUITARConstants.Y_TAG_NAME, Integer
 				.toString(y));
+		
+		captureImage();
+		
+		retCompAdapter.addValueByName(GUITARConstants.IMAGE_LOCATION, 
+				"images\\" + this.ID + ".png");
+		
+		retCompAdapter.addValueByName(GUITARConstants.EFFECT_LOCATION, 
+				"images\\" + this.ID + "a.png");
 
 		// Hash code
 		// String sHashcode = Integer.toString(this.hashCode());
@@ -328,6 +350,41 @@ public abstract class GComponent implements GObject {
 					return result;
 			}
 			return null;
+		}
+	}
+	
+	// // ---------------------------------------
+	// // Capture images
+	private void captureImage() {
+		//Toolkit.getDefaultToolkit().get
+		
+		Robot robot;
+		
+		try {
+			robot = new Robot();
+			Component comp = ((JFCXComponent)this).component;
+
+			Point pos = comp.getLocationOnScreen();
+			Dimension dim = comp.getSize();
+			Rectangle bounder = new Rectangle(pos, dim);
+			
+			BufferedImage screenshot = robot.createScreenCapture(bounder);
+			File check = new File("images\\");
+			if(!check.isDirectory()){
+				check.mkdir();
+			}
+			File outputfile = new File("images\\" + this.ID + ".png");
+			ImageIO.write(screenshot, "png", outputfile);
+			
+			
+		} catch (IOException e) {
+			
+		} catch (AWTException e) {
+			
+			// TODO Auto-generated catch block
+		//	GUITARLog.log.error(e);
+		} catch (Exception e) {
+		//	GUITARLog.log.error(e);
 		}
 	}
 }
