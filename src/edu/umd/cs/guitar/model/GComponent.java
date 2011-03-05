@@ -124,9 +124,6 @@ public abstract class GComponent implements GObject {
 		
 		retCompAdapter.addValueByName(GUITARConstants.IMAGE_LOCATION, 
 				"images\\" + this.ID + ".png");
-		
-		retCompAdapter.addValueByName(GUITARConstants.EFFECT_LOCATION, 
-				"images\\" + this.ID + "a.png");
 
 		// Hash code
 		// String sHashcode = Integer.toString(this.hashCode());
