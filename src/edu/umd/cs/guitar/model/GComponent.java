@@ -60,6 +60,7 @@ public abstract class GComponent implements GObject {
 	private static int ID_COUNTER = 0;
 
 	private int ID;
+	private String IMG_PATH;
 	public Component component = null;
 
 	/**
@@ -74,6 +75,11 @@ public abstract class GComponent implements GObject {
 		super();
 		this.window = window;
 		this.ID = ID_COUNTER++;
+
+		if (System.getProperty("os.name").contains("Windows"))
+			IMG_PATH = "images\\";
+		else
+			IMG_PATH = "images/";
 	}
 
 	/**
@@ -124,7 +130,7 @@ public abstract class GComponent implements GObject {
 		captureImage();
 		
 		retCompAdapter.addValueByName(GUITARConstants.IMAGE_LOCATION, 
-				"images/" + this.ID + ".png");
+				IMG_PATH + this.ID + ".png");
 
 		// Hash code
 		// String sHashcode = Integer.toString(this.hashCode());
@@ -368,11 +374,11 @@ public abstract class GComponent implements GObject {
 			Rectangle bounder = new Rectangle(pos, dim);
 			
 			BufferedImage screenshot = robot.createScreenCapture(bounder);
-			File check = new File("images/");
+			File check = new File("images");
 			if(!check.isDirectory()){
 				check.mkdir();
 			}
-			File outputfile = new File("images/" + this.ID + ".png");
+			File outputfile = new File(IMG_PATH + this.ID + ".png");
 			ImageIO.write(screenshot, "png", outputfile);
 			
 		} catch (IOException e) {
