@@ -60,6 +60,7 @@ public abstract class GComponent implements GObject {
 	private static int ID_COUNTER = 0;
 
 	private int ID;
+	public Component component = null;
 
 	/**
 	 * Container window
@@ -123,7 +124,7 @@ public abstract class GComponent implements GObject {
 		captureImage();
 		
 		retCompAdapter.addValueByName(GUITARConstants.IMAGE_LOCATION, 
-				"images\\" + this.ID + ".png");
+				"images/" + this.ID + ".png");
 
 		// Hash code
 		// String sHashcode = Integer.toString(this.hashCode());
@@ -355,24 +356,24 @@ public abstract class GComponent implements GObject {
 	private void captureImage() {
 		//Toolkit.getDefaultToolkit().get
 		
+		if (this.component != null){
 		Robot robot;
 		
 		try {
 			robot = new Robot();
-			Component comp = ((JFCXComponent)this).component;
+			Component comp = this.component;
 
 			Point pos = comp.getLocationOnScreen();
 			Dimension dim = comp.getSize();
 			Rectangle bounder = new Rectangle(pos, dim);
 			
 			BufferedImage screenshot = robot.createScreenCapture(bounder);
-			File check = new File("images\\");
+			File check = new File("images/");
 			if(!check.isDirectory()){
 				check.mkdir();
 			}
-			File outputfile = new File("images\\" + this.ID + ".png");
+			File outputfile = new File("images/" + this.ID + ".png");
 			ImageIO.write(screenshot, "png", outputfile);
-			
 			
 		} catch (IOException e) {
 			
@@ -382,6 +383,7 @@ public abstract class GComponent implements GObject {
 		//	GUITARLog.log.error(e);
 		} catch (Exception e) {
 		//	GUITARLog.log.error(e);
+		}
 		}
 	}
 }
