@@ -62,7 +62,8 @@ public interface GUITARConstants {
 	final static String TYPE_TAG_NAME = "Type";
 	final static String X_TAG_NAME = "X";
 	final static String Y_TAG_NAME = "Y";
-	final static String IMAGE_LOCATION = "ImageLoc";
+	final static String BEFORE_IMAGE = "BeforeImage";
+	final static String AFTER_IMAGE = "AfterImage";
 
 	final static String HASHCODE_TAG_NAME = "Hashcode";
 

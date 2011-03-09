@@ -127,10 +127,10 @@ public abstract class GComponent implements GObject {
 		retCompAdapter.addValueByName(GUITARConstants.Y_TAG_NAME, Integer
 				.toString(y));
 		
-		captureImage();
-		
-		retCompAdapter.addValueByName(GUITARConstants.IMAGE_LOCATION, 
-				IMG_PATH + this.ID + ".png");
+		if (component != null){
+			retCompAdapter.addValueByName(GUITARConstants.BEFORE_IMAGE, IMG_PATH + this.ID + "before_click" + ".png");
+			retCompAdapter.addValueByName(GUITARConstants.AFTER_IMAGE, IMG_PATH + this.ID + "after_click" + ".png");
+		}
 
 		// Hash code
 		// String sHashcode = Integer.toString(this.hashCode());
@@ -359,7 +359,7 @@ public abstract class GComponent implements GObject {
 	
 	// // ---------------------------------------
 	// // Capture images
-	private void captureImage() {
+	public void captureImage(String state) {
 		//Toolkit.getDefaultToolkit().get
 		
 		if (this.component != null){
@@ -378,7 +378,7 @@ public abstract class GComponent implements GObject {
 			if(!check.isDirectory()){
 				check.mkdir();
 			}
-			File outputfile = new File(IMG_PATH + this.ID + ".png");
+			File outputfile = new File(IMG_PATH + this.ID + state + ".png");
 			ImageIO.write(screenshot, "png", outputfile);
 			
 		} catch (IOException e) {
