@@ -59,8 +59,23 @@ public abstract class GComponent implements GObject {
 
 	private static int ID_COUNTER = 0;
 
+	/**
+	 * Unique identifier given to each GUI component
+	 */
 	public int ID;
+	
+	/**
+	 * Used to make image paths compatible with 
+	 * different operating systems
+	 */
 	public String IMG_PATH;
+	
+	/**
+	 * Stores the x and y coordinates for all edges and the center of a
+	 * GUI component. This field was moved here from JFCXComponent.java
+	 * by team Sikuli in Spring 2011 so that the image capture method 
+	 * could be called from Ripper.java.
+	 */
 	public Component component = null;
 
 	/**
@@ -69,8 +84,15 @@ public abstract class GComponent implements GObject {
 	GWindow window;
 
 	/**
+     * Constructs a new GComponent object. Each receives
+     * a unique ID and is configured so that the image paths
+     * generated later will be compatible with the user's operating
+     * system.
      * 
-     */
+     * @param window
+     * The window that contains the current GUI component
+     * 
+	 */
 	public GComponent(GWindow window) {
 		super();
 		this.window = window;
@@ -84,7 +106,8 @@ public abstract class GComponent implements GObject {
 
 	/**
 	 * 
-	 * Extract component properties and convert it to GUITAR data format
+	 * Extract component properties and convert it to GUITAR data format.
+	 * Edited by Sikuli team in Spring 2011 to add image paths to the XML file.
 	 * 
 	 * <p>
 	 * 

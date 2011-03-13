@@ -62,7 +62,19 @@ public interface GUITARConstants {
 	final static String TYPE_TAG_NAME = "Type";
 	final static String X_TAG_NAME = "X";
 	final static String Y_TAG_NAME = "Y";
+	
+	/**
+	 * Tag used in the GUI.XML file to mark the location  
+	 * of the path to an image file depicting a component before
+	 * any interaction has occurred.
+	 */
 	final static String BEFORE_IMAGE = "BeforeImage";
+	
+	/**
+	 * Tag used in the GUI.XML file to mark the location  
+	 * of the path to an image file depicting a component after
+	 * interaction has occurred.
+	 */
 	final static String AFTER_IMAGE = "AfterImage";
 
 	final static String HASHCODE_TAG_NAME = "Hashcode";
