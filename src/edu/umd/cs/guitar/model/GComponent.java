@@ -59,8 +59,8 @@ public abstract class GComponent implements GObject {
 
 	private static int ID_COUNTER = 0;
 
-	private int ID;
-	private String IMG_PATH;
+	public int ID;
+	public String IMG_PATH;
 	public Component component = null;
 
 	/**
@@ -359,10 +359,10 @@ public abstract class GComponent implements GObject {
 	
 	// // ---------------------------------------
 	// // Capture images
-	public void captureImage(String state) {
+	public void captureImage(String state) {}
 		//Toolkit.getDefaultToolkit().get
 		
-		if (this.component != null){
+	/*	if (this.component != null){
 		Robot robot;
 		
 		try {
@@ -391,5 +391,5 @@ public abstract class GComponent implements GObject {
 		//	GUITARLog.log.error(e);
 		}
 		}
-	}
+	}*/
 }
