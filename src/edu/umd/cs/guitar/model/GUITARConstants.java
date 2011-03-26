@@ -76,6 +76,13 @@ public interface GUITARConstants {
 	 * interaction has occurred.
 	 */
 	final static String AFTER_IMAGE = "AfterImage";
+	
+	/**
+	 * Tag used in the GUI.XML file to mark the location  
+	 * of the path to an image file depicting a component that
+	 * cannot be expanded.
+	 */
+	final static String UNEXPANDABLE = "Image";
 
 	final static String HASHCODE_TAG_NAME = "Hashcode";
 

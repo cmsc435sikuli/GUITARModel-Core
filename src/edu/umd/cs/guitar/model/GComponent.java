@@ -113,7 +113,7 @@ public abstract class GComponent implements GObject {
 	 * 
 	 * @return
 	 */
-	public ComponentType extractProperties() {
+	public ComponentType extractProperties(String type) {
 
 		ComponentType retComp;
 
@@ -150,11 +150,14 @@ public abstract class GComponent implements GObject {
 		retCompAdapter.addValueByName(GUITARConstants.Y_TAG_NAME, Integer
 				.toString(y));
 		
-		if (component != null){
+		if (component != null && type == "expandable"){
 			retCompAdapter.addValueByName(GUITARConstants.BEFORE_IMAGE, IMG_PATH + this.ID + "before_click" + ".png");
 			retCompAdapter.addValueByName(GUITARConstants.AFTER_IMAGE, IMG_PATH + this.ID + "after_click" + ".png");
 		}
 
+		else if (component != null && type == "unexpandable"){
+			retCompAdapter.addValueByName(GUITARConstants.UNEXPANDABLE, IMG_PATH + this.ID + "unexpandable" + ".png");
+		}
 		// Hash code
 		// String sHashcode = Integer.toString(this.hashCode());
 		// retCompAdapter.addValueByName(GUITARConstants.HASHCODE_TAG_NAME,
@@ -339,7 +342,7 @@ public abstract class GComponent implements GObject {
 	 */
 	public GComponent getFirstChild(List<PropertyTypeWrapper> lIDProperties) {
 
-		ComponentType comp = extractProperties();
+		ComponentType comp = extractProperties("empty");
 		List<PropertyType> lProperties = comp.getAttributes().getProperty();
 
 		List<PropertyTypeWrapper> lPropertyTypeAdapters = new ArrayList<PropertyTypeWrapper>();
