@@ -103,6 +103,68 @@ public abstract class GComponent implements GObject {
 		else
 			IMG_PATH = "images/";
 	}
+	
+	public ComponentType extractProperties() {
+
+		ComponentType retComp;
+
+		if (!hasChildren()) {
+			retComp = factory.createComponentType();
+		} else {
+			retComp = factory.createContainerType();
+			ContentsType contents = factory.createContentsType();
+			((ContainerType) retComp).setContents(contents);
+		}
+
+		ComponentTypeWrapper retCompAdapter = new ComponentTypeWrapper(retComp);
+
+		// // Add ID
+		// String ID = getID();
+		// retCompAdapter.addValueByName(GUITARConstants.ID_TAG_NAME, ID);
+
+		// String sID = getFullID();
+		// retCompAdapter.addValueByName(GUITARConstants.FULL_ID_TAG_NAME, sID);
+
+		// Class
+		String sClass = getClassVal();
+		retCompAdapter.addValueByName(GUITARConstants.CLASS_TAG_NAME, sClass);
+
+		// Type
+		String sType = getTypeVal();
+		retCompAdapter.addValueByName(GUITARConstants.TYPE_TAG_NAME, sType);
+
+		int x = getX();
+		retCompAdapter.addValueByName(GUITARConstants.X_TAG_NAME, Integer
+				.toString(x));
+
+		int y = getY();
+		retCompAdapter.addValueByName(GUITARConstants.Y_TAG_NAME, Integer
+				.toString(y));
+		
+		// Hash code
+		// String sHashcode = Integer.toString(this.hashCode());
+		// retCompAdapter.addValueByName(GUITARConstants.HASHCODE_TAG_NAME,
+		// sHashcode);
+
+		// Events
+        extractEvents(retCompAdapter);
+
+		// Other GUI Properties
+		retComp = retCompAdapter.getDComponentType();
+
+		AttributesType attributes = retComp.getAttributes();
+		List<PropertyType> lProperties = attributes.getProperty();
+		List<PropertyType> lGUIProperties = getGUIProperties();
+
+		// Update list
+		if (lGUIProperties != null)
+			lProperties.addAll(lGUIProperties);
+
+		attributes.setProperty(lProperties);
+		retComp.setAttributes(attributes);
+
+		return retComp;
+	}
 
 	/**
 	 * 
@@ -150,12 +212,12 @@ public abstract class GComponent implements GObject {
 		retCompAdapter.addValueByName(GUITARConstants.Y_TAG_NAME, Integer
 				.toString(y));
 		
-		if (component != null && type == "expandable"){
+		if (component != null && type.equals("expandable")){
 			retCompAdapter.addValueByName(GUITARConstants.BEFORE_IMAGE, IMG_PATH + this.ID + "before_click" + ".png");
 			retCompAdapter.addValueByName(GUITARConstants.AFTER_IMAGE, IMG_PATH + this.ID + "after_click" + ".png");
 		}
 
-		else if (component != null && type == "unexpandable"){
+		else if (component != null && type.equals("unexpandable")){
 			retCompAdapter.addValueByName(GUITARConstants.UNEXPANDABLE, IMG_PATH + this.ID + "unexpandable" + ".png");
 		}
 		// Hash code
