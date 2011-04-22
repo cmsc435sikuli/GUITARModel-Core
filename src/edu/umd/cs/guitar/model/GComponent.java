@@ -211,13 +211,16 @@ public abstract class GComponent implements GObject {
 		int y = getY();
 		retCompAdapter.addValueByName(GUITARConstants.Y_TAG_NAME, Integer
 				.toString(y));
-		
+
+		//if type is null, image capture failed, don't put a filename in the gui file because it doesn't exist
 		if (type != null){
+			//if it was expandable, we took two pictures, so put two file names in the gui file
 			if (type.equals("expandable")){
 				retCompAdapter.addValueByName(GUITARConstants.BEFORE_IMAGE, IMG_PATH + this.ID + "before_click" + ".png");
 				retCompAdapter.addValueByName(GUITARConstants.AFTER_IMAGE, IMG_PATH + this.ID + "after_click" + ".png");
 			}
 	
+			//if it was unexpandable, we only took one. you get the idea.
 			else if (type.equals("unexpandable")){
 				retCompAdapter.addValueByName(GUITARConstants.UNEXPANDABLE, IMG_PATH + this.ID + "unexpandable" + ".png");
 			}
@@ -447,9 +450,18 @@ public abstract class GComponent implements GObject {
 		}
 	}
 	
-	// // ---------------------------------------
-	// // Capture images
+	/**
+	 * 
+	 * Provides a standard function template to capture images.
+	 * Edited by Sikuli team in Spring 2011 to capture images.
+	 * 
+	 * <p>
+	 * 
+	 * @return
+	 */
+
 	public boolean captureImage(String state) {
+		//always false because the specific image capture function needs to be implemented differently in each plugin
 		return false;
 	}
 }
