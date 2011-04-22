@@ -76,7 +76,7 @@ public abstract class GComponent implements GObject {
 	 * by team Sikuli in Spring 2011 so that the image capture method 
 	 * could be called from Ripper.java.
 	 */
-	public Component component = null;
+	//public Component component = null;
 
 	/**
 	 * Container window
@@ -212,13 +212,15 @@ public abstract class GComponent implements GObject {
 		retCompAdapter.addValueByName(GUITARConstants.Y_TAG_NAME, Integer
 				.toString(y));
 		
-		if (component != null && type.equals("expandable")){
-			retCompAdapter.addValueByName(GUITARConstants.BEFORE_IMAGE, IMG_PATH + this.ID + "before_click" + ".png");
-			retCompAdapter.addValueByName(GUITARConstants.AFTER_IMAGE, IMG_PATH + this.ID + "after_click" + ".png");
-		}
-
-		else if (component != null && type.equals("unexpandable")){
-			retCompAdapter.addValueByName(GUITARConstants.UNEXPANDABLE, IMG_PATH + this.ID + "unexpandable" + ".png");
+		if (type != null){
+			if (type.equals("expandable")){
+				retCompAdapter.addValueByName(GUITARConstants.BEFORE_IMAGE, IMG_PATH + this.ID + "before_click" + ".png");
+				retCompAdapter.addValueByName(GUITARConstants.AFTER_IMAGE, IMG_PATH + this.ID + "after_click" + ".png");
+			}
+	
+			else if (type.equals("unexpandable")){
+				retCompAdapter.addValueByName(GUITARConstants.UNEXPANDABLE, IMG_PATH + this.ID + "unexpandable" + ".png");
+			}
 		}
 		// Hash code
 		// String sHashcode = Integer.toString(this.hashCode());
@@ -447,37 +449,7 @@ public abstract class GComponent implements GObject {
 	
 	// // ---------------------------------------
 	// // Capture images
-	public void captureImage(String state) {}
-		//Toolkit.getDefaultToolkit().get
-		
-	/*	if (this.component != null){
-		Robot robot;
-		
-		try {
-			robot = new Robot();
-			Component comp = this.component;
-
-			Point pos = comp.getLocationOnScreen();
-			Dimension dim = comp.getSize();
-			Rectangle bounder = new Rectangle(pos, dim);
-			
-			BufferedImage screenshot = robot.createScreenCapture(bounder);
-			File check = new File("images");
-			if(!check.isDirectory()){
-				check.mkdir();
-			}
-			File outputfile = new File(IMG_PATH + this.ID + state + ".png");
-			ImageIO.write(screenshot, "png", outputfile);
-			
-		} catch (IOException e) {
-			
-		} catch (AWTException e) {
-			
-			// TODO Auto-generated catch block
-		//	GUITARLog.log.error(e);
-		} catch (Exception e) {
-		//	GUITARLog.log.error(e);
-		}
-		}
-	}*/
+	public boolean captureImage(String state) {
+		return false;
+	}
 }
